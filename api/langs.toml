@@ -52,6 +52,13 @@
     compile = "pypy3 -c 'print(1)'"
     exec = "pypy3 main.py"
 [[langs]]
+    id = "ruby"
+    name = "Ruby"
+    version = "ruby 2.7.1"
+    source = "main.rb"
+    compile = "ruby -wc ./main.rb"
+    exec = "bash -c 'RUBY_THREAD_VM_STACK_SIZE=268435456 ruby ./main.rb'"
+[[langs]]
     id = "haskell"
     name = "GHC"
     version = "ghc + stack (ubuntu20.04 apt)"
