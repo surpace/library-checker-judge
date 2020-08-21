@@ -136,6 +136,7 @@ runcmd:
     su -c """
     make install
     """ -- library-checker-user
+  - ln -s /usr/local/bin/ruby /usr/bin/ruby
 
 
 
