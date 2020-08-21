@@ -29,8 +29,6 @@ packages:
   - sbcl
   - ghc
   - haskell-stack
-  - ruby-build
-  - rbenv
   
 write_files:
   - path: /etc/default/grub.d/99-lib-judge.cfg
@@ -127,9 +125,17 @@ runcmd:
     dotnet restore /tmp/C-Sharp -r ubuntu.18.04-x64
     """ -- library-checker-user
   - cp -r /tmp/C-Sharp /opt/C-Sharp
-  # install Ruby 2.7.1
-  - rbenv install 2.7.1
-  - rbenv global 2.7.1
+  # install Ruby
+  - wget -q https://cache.ruby-lang.org/pub/ruby/2.7/ruby-2.7.1.tar.gz -O ruby-2.7.1.tar.gz
+  - tar xf ruby-2.7.1.tar.gz
+  - cd ruby-2.7.1
+  - ./configure
+  - make
+  - make check
+  - |
+    su -c """
+    make install
+    """ -- library-checker-user
 
 
 
